@@ -1,5 +1,6 @@
 package com.yhd.HondyuCustom.Activity;
 
+import com.kczx.activity.ProfileActivity;
 import com.yhd.Fragment.CoachFragment;
 import com.yhd.Fragment.DiscoveryFragment;
 import com.yhd.Fragment.DrivingExamFragment;
@@ -31,7 +32,7 @@ import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 
-	private Button addBtn, queryBtn, updateBtn, deleteBtn, btn_sendAll,
+	private Button btn_profile,addBtn, queryBtn, updateBtn, deleteBtn, btn_sendAll,
 			btn_dialog, btn_sendMsgToAndroid, btn_register, btn_myLocation,
 			btn_homepage, btn_map, btn_headimage;
 	private RelativeLayout rl_delete_item;
@@ -52,7 +53,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	private void initView() {
-
+		btn_profile = (Button) findViewById(R.id.btn_profile);
+		btn_profile.setOnClickListener(this);
 		tv_driving_exam = (TextView) findViewById(R.id.tv_driving_exam);
 		tv_driving_exam.setOnClickListener(this);
 		tv_coach = (TextView) findViewById(R.id.tv_coach);
@@ -108,8 +110,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-
-		if (v == tv_driving_exam) {
+		if(v == btn_profile){
+			startActivity(new Intent(MainActivity.this,ProfileActivity.class));
+		}
+		else if (v == tv_driving_exam) {
 			changeFragment(new DrivingExamFragment());
 			initBottomTextview(tv_driving_exam);
 		} else if (v == tv_coach) {

@@ -6,7 +6,83 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="14" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- 配置KEY 2014-7-5 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Ro6TQz9PQe45PPkTqV2t5FYE" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BaseActivity"
+            android:label="@string/title_activity_base" >
+        </activity>
+        <activity android:name=".RegisterActivity" >
+        </activity>
+        <activity android:name=".LocationActivity" >
+        </activity>
+        <activity android:name=".HomePageActivity" >
+        </activity>
+        <activity android:name=".MapActivity" >
+        </activity>
+        <activity android:name=".HeadImageSetActivity" >
+        </activity>
+
+        <!-- 声明百度定位API的定位服务 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+        <service
+            android:name="cn.bmob.push.lib.service.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:permission="cn.bmob.permission.push"
+            android:process="cn.bmob.push" >
+            <intent-filter>
+                <action android:name="cn.bmob.push.lib.service.PushService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="cn.bmob.push.PushReceiver" >
+
+            <!-- 优先级加最高 -->
+            <intent-filter android:priority="2147483647" >
+
+                <!-- 系统启动完成后会调用 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- 解锁完成后会调用 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 监听网络连通性 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 第四步中创建的消息接收器，在这里进行注册 -->
+        <receiver android:name="com.yhd.HondyuCustom.Args.MyPushMessageReceiver" >
+            <intent-filter>
+                <action android:name="cn.bmob.push.action.MESSAGE" />
+            </intent-filter>
+        </receiver>
+    </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -14,12 +90,12 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-    
-    <!--在SDCard中创建与删除文件权限  -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <!--  从SDCard读取数据权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    
+
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 从SDCard读取数据权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <!-- BmobPush SDK权限 -->
     <permission
         android:name="cn.bmob.permission.push"
@@ -82,81 +158,5 @@
     <!-- 允许应用读取低级别的系统日志文件 -->
     <uses-permission android:name="android.permission.READ_LOGS" >
     </uses-permission>
-
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-
-        <!-- 配置KEY 2014-7-5 -->
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="Ro6TQz9PQe45PPkTqV2t5FYE" />
-
-        <activity
-            android:windowSoftInputMode="adjustPan"
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".BaseActivity"
-            android:label="@string/title_activity_base" >
-        </activity>
-        <activity android:name=".RegisterActivity" >
-        </activity>
-        <activity android:name=".LocationActivity" >
-        </activity>
-        <activity android:name=".HomePageActivity" >
-        </activity>
-        <activity android:name=".MapActivity" >
-        </activity>
-        <activity android:name=".HeadImageSetActivity" >
-        </activity>
-
-        <!-- 声明百度定位API的定位服务 -->
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote" >
-        </service>
-        <service
-            android:name="cn.bmob.push.lib.service.PushService"
-            android:exported="true"
-            android:label="PushService"
-            android:permission="cn.bmob.permission.push"
-            android:process="cn.bmob.push" >
-            <intent-filter>
-                <action android:name="cn.bmob.push.lib.service.PushService" />
-            </intent-filter>
-        </service>
-
-        <receiver android:name="cn.bmob.push.PushReceiver" >
-
-            <!-- 优先级加最高 -->
-            <intent-filter android:priority="2147483647" >
-
-                <!-- 系统启动完成后会调用 -->
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <!-- 解锁完成后会调用 -->
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <!-- 监听网络连通性 -->
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-        <!-- 第四步中创建的消息接收器，在这里进行注册 -->
-        <receiver android:name="com.yhd.HondyuCustom.Args.MyPushMessageReceiver" >
-            <intent-filter>
-                <action android:name="cn.bmob.push.action.MESSAGE" />
-            </intent-filter>
-        </receiver>
-    </application>
 
 </manifest>
