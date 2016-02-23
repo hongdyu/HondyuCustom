@@ -44,6 +44,7 @@
         </activity>
         <activity android:name=".HeadImageSetActivity" >
         </activity>
+         <activity android:name=".SqliteTestActivity"></activity>
 
         <!-- 声明百度定位API的定位服务 -->
         <service

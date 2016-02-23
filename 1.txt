@@ -1,0 +1,34 @@
+﻿	/**
+	 * 直线行驶4
+	 */
+	STRAIGHTLINE_DRIVING(4),
+
+	/**
+	 * 变更车道5
+	 */
+	CHANGE_LANES(5),
+
+	/**
+	 * 通过人行横道6
+	 */
+	THROUGH_CROSSWALK(6),
+
+	/**
+	 * 通过学校7
+	 */
+	THROUGH_SCHOOL(7),
+
+	/**
+	 * 通过公交站8
+	 */
+	THROUGH_BUSSTATION(8),
+
+	/**
+	 * 路口左转9
+	 */
+	TRUN_LEFT(9),
+
+	/**
+	 * 路口右转10
+	 */
+	TRUN_RIGHT(10),
