@@ -254,19 +254,20 @@ containing a value of this type.
         public static final int activity_title=0x7f030005;
         public static final int edit_line_item=0x7f030006;
         public static final int edit_text_dialog=0x7f030007;
-        public static final int expandablelist_item_device_detail=0x7f030008;
-        public static final int expandablelist_item_device_name=0x7f030009;
-        public static final int fragment_coach=0x7f03000a;
-        public static final int fragment_discovery=0x7f03000b;
-        public static final int fragment_driving_exam=0x7f03000c;
-        public static final int fragment_driving_group=0x7f03000d;
-        public static final int head_image_set=0x7f03000e;
-        public static final int home_page=0x7f03000f;
-        public static final int layout_menu_bottom=0x7f030010;
-        public static final int location=0x7f030011;
-        public static final int map=0x7f030012;
-        public static final int photo_choose_dialog=0x7f030013;
-        public static final int register=0x7f030014;
+        public static final int edit_text_item=0x7f030008;
+        public static final int expandablelist_item_device_detail=0x7f030009;
+        public static final int expandablelist_item_device_name=0x7f03000a;
+        public static final int fragment_coach=0x7f03000b;
+        public static final int fragment_discovery=0x7f03000c;
+        public static final int fragment_driving_exam=0x7f03000d;
+        public static final int fragment_driving_group=0x7f03000e;
+        public static final int head_image_set=0x7f03000f;
+        public static final int home_page=0x7f030010;
+        public static final int layout_menu_bottom=0x7f030011;
+        public static final int location=0x7f030012;
+        public static final int map=0x7f030013;
+        public static final int photo_choose_dialog=0x7f030014;
+        public static final int register=0x7f030015;
     }
     public static final class menu {
         public static final int base=0x7f090000;

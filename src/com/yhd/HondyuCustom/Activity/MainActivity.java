@@ -1,12 +1,12 @@
 package com.yhd.HondyuCustom.Activity;
 
-import com.yhd.Fragment.CoachFragment;
-import com.yhd.Fragment.DiscoveryFragment;
-import com.yhd.Fragment.DrivingExamFragment;
-import com.yhd.Fragment.DrivingGroupFragment;
 import com.yhd.HondyuCustom.Activity.R;
-import com.yhd.HondyuCustom.Entity.Person;
+import com.yhd.HondyuCustom.Entity.Person1;
 import com.yhd.HondyuCustom.Helper.CustomDialogActivity;
+import com.yhd.fragment.CoachFragment;
+import com.yhd.fragment.DiscoveryFragment;
+import com.yhd.fragment.DrivingExamFragment;
+import com.yhd.fragment.DrivingGroupFragment;
 
 import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.BmobPushManager;

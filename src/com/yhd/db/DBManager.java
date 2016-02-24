@@ -57,8 +57,10 @@ public class DBManager {
 	 * delete old person
 	 */
 	public void deleteOldPerson(Person person) {
-		db.delete("person", "age >= ?",
+		
+		db.delete("person", "age = ?",
 				new String[] { String.valueOf(person.age) });
+		Log.e("delete 事务成功完成", "delete person success");
 	}
 	
 	 /** 

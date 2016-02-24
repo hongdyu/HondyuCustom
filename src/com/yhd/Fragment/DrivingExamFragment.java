@@ -1,4 +1,4 @@
-package com.yhd.Fragment;
+package com.yhd.fragment;
 
 import com.yhd.HondyuCustom.Activity.R;
 import com.yhd.HondyuCustom.Activity.SqliteTestActivity;

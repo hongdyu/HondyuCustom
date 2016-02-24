@@ -9,7 +9,7 @@ import cn.bmob.v3.datatype.BmobGeoPoint;
  * @author Administrator
  *
  */
-public class Person extends BmobObject {
+public class Person1 extends BmobObject {
 
 	private static final long serialVersionUID = 1L;
 	private String name;
