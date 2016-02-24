@@ -1,7 +1,7 @@
 package com.yhd.fragment;
 
-import com.yhd.HondyuCustom.Activity.R;
-import com.yhd.HondyuCustom.Activity.SqliteTestActivity;
+import com.yhd.R;
+import com.yhd.activity.SqliteTestActivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,12 +14,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager.LayoutParams;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class DrivingExamFragment extends Fragment implements OnClickListener {
 

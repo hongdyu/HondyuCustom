@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.yhd.enity.Person;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.Toast;
 
 public class DBManager {
 	private SQLHelper sqlHelper;

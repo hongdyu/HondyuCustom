@@ -1,6 +1,6 @@
 package com.yhd.fragment;
 
-import com.yhd.HondyuCustom.Activity.R;
+import com.yhd.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
