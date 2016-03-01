@@ -31,7 +31,7 @@
             android:layout_alignParentRight="true"
             android:src="@drawable/match_return_button_nor_right" />
         
-        <com.kczx.activity.view.CircleImageView
+        <com.yhd.view.CircleImageView
             android:id="@+id/imageview_head"
             android:layout_width="50dp"
             android:layout_height="50dp"

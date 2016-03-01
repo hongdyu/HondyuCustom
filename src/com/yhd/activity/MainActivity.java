@@ -6,6 +6,7 @@ import com.yhd.fragment.DiscoveryFragment;
 import com.yhd.fragment.DrivingExamFragment;
 import com.yhd.fragment.DrivingGroupFragment;
 import com.yhd.helper.CustomDialogActivity;
+import com.yhd.view.SlidingMenu;
 
 import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.BmobPushManager;
@@ -24,15 +25,16 @@ import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 
-	private Button btn_profile,addBtn, queryBtn, updateBtn, deleteBtn, btn_sendAll,
-			btn_dialog, btn_sendMsgToAndroid, btn_register, btn_myLocation,
-			btn_homepage, btn_map, btn_headimage;
+	private Button btn_profile;
+//			addBtn, queryBtn, updateBtn, deleteBtn, btn_sendAll,
+//			btn_dialog, btn_sendMsgToAndroid, btn_register, btn_myLocation,
+//			btn_homepage, btn_map, btn_headimage;
 	private RelativeLayout rl_delete_item;
 	private TextView tv_driving_exam, tv_coach, tv_driving_exam_group,
 			tv_discovery;
-
+	private SlidingMenu mSlidingMenu;
 	BmobPushManager<BmobInstallation> bmobPushManager;
-	private String userId = "";
+//	private String userId = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		tv_discovery = (TextView) findViewById(R.id.tv_discovery);
 		tv_discovery.setOnClickListener(this);
 
+//		mSlidingMenu = (SlidingMenu) findViewById(R.id.id_menu);
 		/*
 		 * addBtn = (Button) findViewById(R.id.addBtn); queryBtn = (Button)
 		 * findViewById(R.id.queryBtn); updateBtn = (Button)
@@ -104,8 +107,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	public void onClick(View v) {
 		if(v == btn_profile){
 			startActivity(new Intent(MainActivity.this,ProfileActivity.class));
-		}
-		else if (v == tv_driving_exam) {
+		}else if (v == tv_driving_exam) {
 			changeFragment(new DrivingExamFragment());
 			initBottomTextview(tv_driving_exam);
 		} else if (v == tv_coach) {

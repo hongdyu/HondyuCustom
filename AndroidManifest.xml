@@ -34,6 +34,8 @@
             android:name="com.yhd.activity.BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
+        <activity android:name="com.yhd.activity.ProfileActivity" >
+        </activity>
         <activity android:name="com.yhd.activity.RegisterActivity" >
         </activity>
         <activity android:name="com.yhd.activity.LocationActivity" >
