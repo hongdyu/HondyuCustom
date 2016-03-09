@@ -47,6 +47,8 @@
         <activity android:name="com.yhd.activity.HeadImageSetActivity" >
         </activity>
          <activity android:name="com.yhd.activity.SqliteTestActivity"></activity>
+         <activity android:name="com.yhd.activity.SlideBarTestActivity"></activity>
+         
 
         <!-- 声明百度定位API的定位服务 -->
         <service

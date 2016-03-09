@@ -1,6 +1,7 @@
 package com.yhd.fragment;
 
 import com.yhd.R;
+import com.yhd.activity.SlideBarTestActivity;
 import com.yhd.activity.SqliteTestActivity;
 
 import android.app.Activity;
@@ -24,7 +25,7 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 	private View view;
 	private Activity mContxt;
 
-	private Button btn_show_dialog,btn_operate_db;
+	private Button btn_show_dialog,btn_operate_db,btn_slide_bar;
 	private Dialog dialog;
 
 	@Override
@@ -33,9 +34,6 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		view = inflater.inflate(R.layout.fragment_driving_exam, container,
 				false);
 		mContxt = getActivity();
-		Window win = mContxt.getWindow();
-		WindowManager.LayoutParams params = win.getAttributes();
-		win.setSoftInputMode(params.SOFT_INPUT_ADJUST_NOTHING);
 		initView();
 		return view;
 	}
@@ -45,6 +43,8 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		btn_show_dialog.setOnClickListener(this);
 		btn_operate_db = (Button) view.findViewById(R.id.btn_operate_db);
 		btn_operate_db.setOnClickListener(this);
+		btn_slide_bar = (Button) view.findViewById(R.id.btn_slide_bar);
+		btn_slide_bar.setOnClickListener(this);
 	}
 
 	@Override
@@ -53,7 +53,10 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 			showAddLinesAlertDialog();
 		}else if(v == btn_operate_db){
 			startActivity(new Intent(getActivity(),SqliteTestActivity.class));
+		}else if(v == btn_slide_bar){
+			startActivity(new Intent(getActivity(),SlideBarTestActivity.class));
 		}
+			
 	}
 
 	/****
