@@ -3,10 +3,9 @@ package com.yhd.activity;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import com.yhd.R;
 import com.yhd.view.CircleImageView;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -29,10 +28,12 @@ import android.widget.Toast;
 
 public class HeadImageSetActivity extends Activity implements OnClickListener {
 
+	@SuppressWarnings("unused")
 	private static final String IMAGE_UNSPECIFIED = "image/*";
 
 	/** 获取到的图片路径 */
 	private String picPath;
+	@SuppressWarnings("unused")
 	private Intent lastIntent;
 	private Uri photoUri;
 	// 使用照相机拍照获取图片
@@ -47,6 +48,7 @@ public class HeadImageSetActivity extends Activity implements OnClickListener {
 	private Button btn_cancel, btn_photo_album, btn_camera;
 	Dialog dialog;
 
+	@SuppressWarnings("unused")
 	private Bundle mybundle;
 	private static final int PHOTO_REQUEST_TAKEPHOTO = 1;// 拍照
 	private static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
@@ -64,6 +66,7 @@ public class HeadImageSetActivity extends Activity implements OnClickListener {
 	}
 
 	// 使用系统当前日期加以调整作为照片的名称
+	@SuppressLint("SimpleDateFormat")
 	private String getPhotoFileName() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat dateFormat = new SimpleDateFormat(
@@ -268,7 +271,7 @@ public class HeadImageSetActivity extends Activity implements OnClickListener {
 	 * @param requestCode
 	 * @param data
 	 */
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings( "unused" )
 	private void doPhoto(int requestCode, Intent data) {
 		// 从相册取图片
 		if (requestCode == SELECT_PIC_BY_PICK_PHOTO) {

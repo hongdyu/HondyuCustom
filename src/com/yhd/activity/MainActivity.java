@@ -32,6 +32,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private RelativeLayout rl_delete_item;
 	private TextView tv_driving_exam, tv_coach, tv_driving_exam_group,
 			tv_discovery;
+	@SuppressWarnings("unused")
 	private SlidingMenu mSlidingMenu;
 	BmobPushManager<BmobInstallation> bmobPushManager;
 //	private String userId = "";
@@ -160,6 +161,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	/**
 	 * 显示dialog
 	 */
+	@SuppressWarnings("unused")
 	private void showMyDialog() {
 		// 创建Dialog并设置样式主题
 		CustomDialogActivity customDialog = new CustomDialogActivity(this,

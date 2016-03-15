@@ -129,7 +129,8 @@ public class SqliteTestActivity extends Activity implements OnClickListener {
         listView.setAdapter(adapter);  
     }  
       
-    public void queryTheCursor(View view) {  
+    @SuppressWarnings("deprecation")
+	public void queryTheCursor(View view) {  
         Cursor c = mgr.queryTheCursor();  
         startManagingCursor(c); //托付给activity根据自己的生命周期去管理Cursor的生命周期  
         CursorWrapper cursorWrapper = new CursorWrapper(c) {  
@@ -144,8 +145,7 @@ public class SqliteTestActivity extends Activity implements OnClickListener {
             }  
         };  
         //确保查询结果中有"_id"列  
-        @SuppressWarnings("deprecation")
-		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2,   
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2,   
                 cursorWrapper, new String[]{"name", "info"}, new int[]{android.R.id.text1, android.R.id.text2});  
         ListView listView = (ListView) findViewById(R.id.listView);  
         listView.setAdapter(adapter);  
