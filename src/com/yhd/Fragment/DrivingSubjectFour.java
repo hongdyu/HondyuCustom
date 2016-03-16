@@ -5,7 +5,6 @@ import com.yhd.common.ApplicationCache;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
@@ -15,8 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 /***
  *科目四
@@ -25,7 +22,6 @@ public class DrivingSubjectFour extends Fragment {
 
 	private Activity mContext;
 	private WebView mWebView;
-	private ProgressBar mRoundProgressBar;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
