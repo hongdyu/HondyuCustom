@@ -1,5 +1,6 @@
 package com.yhd.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PointF;
@@ -12,7 +13,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-
 import com.yhd.R;
 import com.nineoldandroids.view.ViewHelper;
 
@@ -39,6 +39,7 @@ public class SlidingMenu extends HorizontalScrollView {
 	private ViewGroup mMenu;
 	private ViewGroup mContent;
 	
+	@SuppressWarnings("unused")
 	private boolean isSlide = false;
 	
 	/** 触摸时按下的点 **/
@@ -162,6 +163,7 @@ public class SlidingMenu extends HorizontalScrollView {
 		return super.onInterceptTouchEvent(ev);
 	}
 
+	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
 		int action = ev.getAction();
