@@ -28,14 +28,17 @@ import android.widget.RelativeLayout;
 public class DiscoveryFragment extends Fragment {
 
 	View view;
+	@SuppressWarnings("unused")
 	private RelativeLayout rl_delete_item, rl_replace_item, rl_move_position,
 			rl_update_number;
 	// 定位相关
 	LocationClient mLocClient;
 	public MyLocationListener myListener = new MyLocationListener();
+	@SuppressWarnings("unused")
 	private LocationMode mCurrentMode;
 	BitmapDescriptor mCurrentMarker;
 
+	@SuppressWarnings("unused")
 	private Marker mMarker;
 	TextureMapView mMapView;
 	BaiduMap mBaiduMap;
