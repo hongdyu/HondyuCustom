@@ -1,6 +1,7 @@
 package com.yhd.fragment;
 
 import com.yhd.R;
+import com.yhd.activity.LocationCityActivity;
 import com.yhd.activity.SlideBarTestActivity;
 import com.yhd.activity.SqliteTestActivity;
 
@@ -25,7 +26,7 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 	private View view;
 	private Activity mContxt;
 
-	private Button btn_show_dialog,btn_operate_db,btn_slide_bar;
+	private Button btn_show_dialog,btn_operate_db,btn_slide_bar,btn_location_city;
 	private Dialog dialog;
 
 	@Override
@@ -45,6 +46,8 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		btn_operate_db.setOnClickListener(this);
 		btn_slide_bar = (Button) view.findViewById(R.id.btn_slide_bar);
 		btn_slide_bar.setOnClickListener(this);
+		btn_location_city = (Button) view.findViewById(R.id.btn_location_city);
+		btn_location_city.setOnClickListener(this);
 	}
 
 	@Override
@@ -55,8 +58,9 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 			startActivity(new Intent(getActivity(),SqliteTestActivity.class));
 		}else if(v == btn_slide_bar){
 			startActivity(new Intent(getActivity(),SlideBarTestActivity.class));
+		}else if(v == btn_location_city){
+			startActivity(new Intent(getActivity(),LocationCityActivity.class));
 		}
-			
 	}
 
 	/****

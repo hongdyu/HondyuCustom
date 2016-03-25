@@ -28,4 +28,10 @@
         android:layout_height="wrap_content"
         android:text="滑动进度条控制" />
 
+    <Button
+        android:id="@+id/btn_location_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定位当前城市" />
+
 </LinearLayout>
