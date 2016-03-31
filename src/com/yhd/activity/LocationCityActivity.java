@@ -5,11 +5,9 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
-import com.baidu.mapapi.model.LatLng;
 import com.yhd.R;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 public class LocationCityActivity extends BaseActivity{
@@ -60,8 +58,8 @@ public class LocationCityActivity extends BaseActivity{
 
         @Override
         public void onReceiveLocation(BDLocation location) {
-        	 //Receive Location
-//            StringBuffer sb = new StringBuffer(256);
+        	//Receive Location
+//          StringBuffer sb = new StringBuffer(256);
             tv_longtitude.setText(String.valueOf(location.getLongitude()));
             tv_latitude.setText(String.valueOf(location.getLatitude()));
             tv_city.setText(location.getCity());
