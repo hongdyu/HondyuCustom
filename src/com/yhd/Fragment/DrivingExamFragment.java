@@ -5,6 +5,7 @@ import com.yhd.activity.LocationCityActivity;
 import com.yhd.activity.PlayVideoActivity;
 import com.yhd.activity.SlideBarTestActivity;
 import com.yhd.activity.SqliteTestActivity;
+import com.yhd.view.CustomDialog;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,21 +22,28 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class DrivingExamFragment extends Fragment implements OnClickListener {
 
 	private View view;
-	private Activity mContxt;
+	private Activity mContext;
 
-	private Button btn_show_dialog,btn_operate_db,btn_slide_bar,btn_location_city,btn_play_video;
+	private Button btn_show_dialog,btn_operate_db,btn_slide_bar,btn_location_city,btn_play_video
+			,btn_slidebar_dialog;
+	private TextView tv_count;
+	private SeekBar mSeekbar;
 	private Dialog dialog;
+	private CustomDialog slidebarCustomDialog;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.fragment_driving_exam, container,
 				false);
-		mContxt = getActivity();
+		mContext = getActivity();
 		initView();
 		return view;
 	}
@@ -51,6 +59,8 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		btn_location_city.setOnClickListener(this);
 		btn_play_video = (Button) view.findViewById(R.id.btn_play_video);
 		btn_play_video.setOnClickListener(this);
+		btn_slidebar_dialog = (Button)view.findViewById(R.id.btn_slidebar_dialog);
+		btn_slidebar_dialog.setOnClickListener(this);
 	}
 
 	@Override
@@ -65,41 +75,47 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 			startActivity(new Intent(getActivity(),LocationCityActivity.class));
 		}else if(v == btn_play_video){
 			startActivity(new Intent(getActivity(),PlayVideoActivity.class));
+		}else if(v == btn_slidebar_dialog){
+			showSlidebarDialog();
 		}
 	}
 
-	/****
-	 * 显示提示增加线路
+	/**
+	 * 弹出滑动条对话框
 	 */
-	private void showAddLinesAlertDialog() {
-	/*	AlertDialog.Builder builer = new AlertDialog.Builder(mContxt);
-//		Dialog dialog = new AlertDialog.Builder(mContxt);
-		final EditText edt = new EditText(mContxt);
-		edt.setPrivateImeOptions("flagNoExtractUi");
-		builer.setTitle("添加线路").setView(edt);
-		builer.setPositiveButton("增加", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// 传数据
-			}
-		});
+	private void showSlidebarDialog() {
+		LayoutInflater inflater = LayoutInflater.from(mContext);
+		View v = inflater.inflate(R.layout.slidebar_dialog, null);
+		tv_count = (TextView) v.findViewById(R.id.tv_count);
+		mSeekbar = (SeekBar) v.findViewById(R.id.seekbar);
+		slidebarCustomDialog = new CustomDialog(mContext);
+		CustomDialog.Builder builer = new CustomDialog.Builder(mContext);
+		builer.setTitle("移动位置");
+		builer.setContentView(v);
 		builer.setNegativeButton("取消", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 			}
 		});
-		builer.show();
-		*/
-		
+		builer.setPositiveButton("确定", new DialogInterface.OnClickListener(){
 
-//		final EditText edt = new EditText(mContxt);
-//		edt.setPrivateImeOptions("flagNoExtractUi");
-		LayoutInflater inflater = (LayoutInflater) mContxt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+		slidebarCustomDialog = builer.create();
+		slidebarCustomDialog.show();
+	}
+
+	/****
+	 * 显示提示增加线路
+	 */
+	private void showAddLinesAlertDialog() {
+		LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		final View layout = inflater.inflate(R.layout.edit_text_dialog, null);
-//		final EditText tv_content = (EditText) layout
-//				.findViewById(R.id.tv_content);
-		dialog = new AlertDialog.Builder(mContxt)
+		dialog = new AlertDialog.Builder(mContext)
 		.setTitle("确认删除")
 		.setView(layout)
 		.setPositiveButton("是",new DialogInterface.OnClickListener() {
@@ -112,7 +128,4 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		Window window = dialog.getWindow();
 	    window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 	}
-	
-	
-
 }

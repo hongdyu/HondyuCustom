@@ -3,9 +3,8 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-
-    <!-- 对话框宽度 -->
-    <item name="dialog_min_width_major" type="fraction">65%</item>
-    <item name="dialog_min_width_minor" type="fraction">85%</item>
+    
+    <item type="fraction" name="dialog_min_width_major">45%</item>
+<item type="fraction" name="dialog_min_width_minor">72%</item>
 
 </resources>

@@ -52,4 +52,23 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <!-- 对话框样式 -->
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_backgd</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+    <!-- 定义标题和内容的外观 -->
+    <style name="DialogText">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="DialogText.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+    <!-- 对话框样式 -->
+
 </resources>
