@@ -2,6 +2,7 @@ package com.yhd.fragment;
 
 import com.yhd.R;
 import com.yhd.activity.LocationCityActivity;
+import com.yhd.activity.ObtainUserPhoneActivity;
 import com.yhd.activity.PlayVideoActivity;
 import com.yhd.activity.SlideBarTestActivity;
 import com.yhd.activity.SqliteTestActivity;
@@ -15,16 +16,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.ProgressBar;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DrivingExamFragment extends Fragment implements OnClickListener {
 
@@ -32,8 +36,11 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 	private Activity mContext;
 
 	private Button btn_show_dialog,btn_operate_db,btn_slide_bar,btn_location_city,btn_play_video
-			,btn_slidebar_dialog;
+			,btn_slidebar_dialog,btn_obtain_phone;
+	@SuppressWarnings("unused")
 	private TextView tv_count;
+	private EditText et_test;
+	@SuppressWarnings("unused")
 	private SeekBar mSeekbar;
 	private Dialog dialog;
 	private CustomDialog slidebarCustomDialog;
@@ -61,6 +68,21 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		btn_play_video.setOnClickListener(this);
 		btn_slidebar_dialog = (Button)view.findViewById(R.id.btn_slidebar_dialog);
 		btn_slidebar_dialog.setOnClickListener(this);
+		btn_obtain_phone = (Button) view.findViewById(R.id.btn_obtain_phone);
+		btn_obtain_phone.setOnClickListener(this);
+		et_test = (EditText) view.findViewById(R.id.et_test);
+		et_test.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+			@Override
+			public boolean onEditorAction(TextView v, int actionId,
+					KeyEvent event) {
+				 if (actionId == EditorInfo.IME_ACTION_DONE) {
+		                Toast.makeText(getActivity(), "输入完成", Toast.LENGTH_LONG).show();
+		                return true;
+		            }
+				return false;
+			}
+	    });
 	}
 
 	@Override
@@ -77,6 +99,8 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 			startActivity(new Intent(getActivity(),PlayVideoActivity.class));
 		}else if(v == btn_slidebar_dialog){
 			showSlidebarDialog();
+		}else if(v == btn_obtain_phone){
+			startActivity(new Intent(getActivity(),ObtainUserPhoneActivity.class));
 		}
 	}
 
@@ -128,4 +152,5 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		Window window = dialog.getWindow();
 	    window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 	}
+	
 }

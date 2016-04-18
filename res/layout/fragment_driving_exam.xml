@@ -46,4 +46,19 @@
         android:layout_height="wrap_content"
         android:text="slide对话框" />
 
+    <EditText
+        android:id="@+id/et_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_obtain_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取手机信息" />
+
 </LinearLayout>
