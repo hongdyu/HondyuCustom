@@ -11,9 +11,13 @@ import com.yhd.view.CustomDialog;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -36,7 +40,7 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 	private Activity mContext;
 
 	private Button btn_show_dialog,btn_operate_db,btn_slide_bar,btn_location_city,btn_play_video
-			,btn_slidebar_dialog,btn_obtain_phone;
+			,btn_slidebar_dialog,btn_obtain_phone,btn_connect_network;
 	@SuppressWarnings("unused")
 	private TextView tv_count;
 	private EditText et_test;
@@ -52,7 +56,51 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 				false);
 		mContext = getActivity();
 		initView();
+		//注册帧听
+		NetState receiver = new NetState();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+		mContext.registerReceiver(receiver, filter);
+		receiver.onReceive(mContext, null);
+		
+		
 		return view;
+	}
+	
+	/**
+	 * 内部类 注册广播监听网络状态
+	 * @author hondyu
+	 */
+	class NetState extends BroadcastReceiver{
+
+	    @Override
+	    public void onReceive(Context context, Intent arg1) {
+	        ConnectivityManager manager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	        NetworkInfo gprs = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+	        NetworkInfo wifi = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+	        
+	        AlertDialog.Builder ab = new AlertDialog.Builder(context);
+	        if(!gprs.isConnected() && !wifi.isConnected())
+	        {
+	            ab.setMessage("网络连接断开，请检查网络");
+	        }
+	        else{
+	            ab.setMessage("网络连接成功");
+//	            ab.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//	                @Override
+//	                public void onClick(DialogInterface dialog, int which) {
+//	                    dialog.dismiss();
+//	                }
+//	            });               
+	        }
+	        ab.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+	        ab.show();
+	    }
 	}
 
 	private void initView() {
@@ -70,6 +118,8 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		btn_slidebar_dialog.setOnClickListener(this);
 		btn_obtain_phone = (Button) view.findViewById(R.id.btn_obtain_phone);
 		btn_obtain_phone.setOnClickListener(this);
+		btn_connect_network = (Button) view.findViewById(R.id.btn_connect_network);
+		btn_connect_network.setOnClickListener(this);
 		et_test = (EditText) view.findViewById(R.id.et_test);
 		et_test.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
@@ -101,8 +151,31 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 			showSlidebarDialog();
 		}else if(v == btn_obtain_phone){
 			startActivity(new Intent(getActivity(),ObtainUserPhoneActivity.class));
+		}else if(v == btn_connect_network){
+			checkNetworkState();
 		}
 	}
+	
+	/** 
+     * 检测网络是否连接 
+     * @return 
+     */  
+    private boolean checkNetworkState() {  
+        boolean flag = false;  
+        //得到网络连接信息  
+        ConnectivityManager manager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);  
+        //去进行判断网络是否连接  
+        if (manager.getActiveNetworkInfo() != null) {  
+            flag = manager.getActiveNetworkInfo().isAvailable();  
+        }  
+        if (!flag) {  
+           Toast.makeText(getActivity(), "当前网络不可用", Toast.LENGTH_LONG).show();
+        } else {  
+           Toast.makeText(getActivity(), "当前网络已连接", Toast.LENGTH_LONG).show();
+        }  
+  
+        return flag;  
+    }  
 
 	/**
 	 * 弹出滑动条对话框
