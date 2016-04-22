@@ -1,5 +1,6 @@
 package com.yhd.activity;
 
+import com.yhd.activity.MainActivity;
 import com.yhd.R;
 import com.yhd.fragment.CoachFragment;
 import com.yhd.fragment.DiscoveryFragment;
@@ -10,6 +11,7 @@ import com.yhd.view.SlidingMenu;
 
 import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.BmobPushManager;
+import cn.jpush.android.api.JPushInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +24,7 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 
@@ -35,7 +38,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	@SuppressWarnings("unused")
 	private SlidingMenu mSlidingMenu;
 	BmobPushManager<BmobInstallation> bmobPushManager;
-//	private String userId = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		bmobPushManager = new BmobPushManager<BmobInstallation>(this);
 		initView();
 		initMainButtom();
+		String regId = JPushInterface.getRegistrationID(getApplicationContext()); 
+		Toast.makeText(getApplicationContext(), "getRegistrationID: "+regId, Toast.LENGTH_LONG).show();
 	}
-
+	
 	private void initView() {
 		btn_profile = (Button) findViewById(R.id.btn_profile);
 		btn_profile.setOnClickListener(this);
@@ -129,7 +133,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				.setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
 				.commit();
 	}
-
+	
 	/**
 	 * 显示dialog
 	 */
@@ -149,4 +153,18 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				.findViewById(R.id.rl_delete_item);
 		rl_delete_item.setOnClickListener(this);
 	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	@Override
+	protected void onResume() {
+		String regId = JPushInterface.getRegistrationID(getApplicationContext()); 
+		Toast.makeText(getApplicationContext(), "getRegistrationID: "+regId, Toast.LENGTH_LONG).show();
+		super.onResume();
+	}
+	
+	
 }

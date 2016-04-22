@@ -4,6 +4,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import cn.jpush.android.api.JPushInterface;
+
 import com.yhd.R;
 import com.yhd.view.CircleImageView;
 
@@ -25,6 +27,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProfileActivity extends Activity implements OnClickListener {
 	final static String PAGE_TITLE = "我的资料";
@@ -48,6 +51,17 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_profile);
 		getActionBar().hide();
 		initView();
+		initData();
+	}
+
+	private void initData() {
+		Intent intent = getIntent();
+        if (null != intent) {
+	        Bundle bundle = getIntent().getExtras();
+	        String title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
+	        String content = bundle.getString(JPushInterface.EXTRA_ALERT);
+	        Toast.makeText(ProfileActivity.this, "Title : " + title + "  " + "Content : " + content,Toast.LENGTH_LONG).show();
+        }		
 	}
 
 	private void initView() {

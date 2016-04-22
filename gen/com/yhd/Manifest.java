@@ -9,6 +9,9 @@ package com.yhd;
 
 public final class Manifest {
     public static final class permission {
+        /**  Required 
+         */
+        public static final String JPUSH_MESSAGE="com.yhd.permission.JPUSH_MESSAGE";
         /**  BmobPush SDK权限 
          */
         public static final String push="cn.bmob.permission.push";

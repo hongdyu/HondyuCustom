@@ -1,6 +1,7 @@
 package com.yhd.fragment;
 
 import com.yhd.R;
+import com.yhd.activity.JpushMsgActivity;
 import com.yhd.activity.LocationCityActivity;
 import com.yhd.activity.ObtainUserPhoneActivity;
 import com.yhd.activity.PlayVideoActivity;
@@ -40,7 +41,7 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 	private Activity mContext;
 
 	private Button btn_show_dialog,btn_operate_db,btn_slide_bar,btn_location_city,btn_play_video
-			,btn_slidebar_dialog,btn_obtain_phone,btn_connect_network;
+			,btn_slidebar_dialog,btn_obtain_phone,btn_connect_network,btn_jpush_test;
 	@SuppressWarnings("unused")
 	private TextView tv_count;
 	private EditText et_test;
@@ -62,8 +63,6 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
 		mContext.registerReceiver(receiver, filter);
 		receiver.onReceive(mContext, null);
-		
-		
 		return view;
 	}
 	
@@ -120,6 +119,8 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 		btn_obtain_phone.setOnClickListener(this);
 		btn_connect_network = (Button) view.findViewById(R.id.btn_connect_network);
 		btn_connect_network.setOnClickListener(this);
+		btn_jpush_test = (Button) view.findViewById(R.id.btn_jpush_test);
+		btn_jpush_test.setOnClickListener(this);
 		et_test = (EditText) view.findViewById(R.id.et_test);
 		et_test.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
@@ -153,6 +154,8 @@ public class DrivingExamFragment extends Fragment implements OnClickListener {
 			startActivity(new Intent(getActivity(),ObtainUserPhoneActivity.class));
 		}else if(v == btn_connect_network){
 			checkNetworkState();
+		}else if(v == btn_jpush_test){
+			startActivity(new Intent(getActivity(),JpushMsgActivity.class));
 		}
 	}
 	
